@@ -1,0 +1,13 @@
+@mixin form {
+  margin-top: 2rem;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background: black;
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Pacifico', cursive;
+}

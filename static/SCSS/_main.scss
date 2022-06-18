@@ -1,0 +1,193 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    text-transform: capitalize;
+    text-align: center;
+    width: 80%;
+  }
+
+}
+
+// 1 - Upload Section
+.upload-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5rem;
+  margin: 2rem;
+}
+
+// Upload Image Area container
+.upload-container {
+  height: 350px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .choose-button {
+    @include form
+  }
+}
+
+// Upload Image Area Wrapper
+.upload-wrapper {
+  position: relative;
+  height: 85%;
+  width: 100%;
+  border: 2px dashed #c2cdda;
+  border-radius: 10px;
+  background: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // Uploaded Image
+  .image {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 8;
+
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 10px;
+      visibility: hidden;
+
+      &.active {
+        visibility: visible;
+      }
+    }
+  }
+
+  // Cloud and Text placeholder in Processing Area
+  .content {
+    display: grid;
+    place-items: center;
+
+    .upload-icon {
+      width: 100px;
+
+      img {
+        width: 100%;
+
+        &.alert {
+          filter: invert(19%) sepia(92%) saturate(4489%) hue-rotate(347deg) brightness(97%) contrast(100%);
+        }
+      }
+    }
+
+    .upload-text {
+      font-size: 1.2rem;
+      text-align: center;
+
+      .alert-text {
+        width: fit-content;
+      }
+    }
+  }
+
+  // Cancel Processing Image Button
+  .cancel-button {
+    width: 15px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    display: none;
+    transition: all 300ms ease-in-out;
+    z-index: 10;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      filter: invert(19%) sepia(92%) saturate(4489%) hue-rotate(347deg) brightness(97%) contrast(100%);
+    }
+  }
+
+  &.active {
+    border: 1px solid #c2cdda;
+  }
+
+  &.active:hover .cancel-button {
+    display: block;
+  }
+
+  &.dragover {
+    border: 1px solid #c2cdda;
+  }
+
+  &.alert {
+    border: 1px solid red;
+    color: red;
+  }
+}
+
+
+// Form for processing image
+.file-form {
+  width: 450px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      width: 100%;
+      border-radius: 25px;
+      height: 40px;
+      border: none;
+      margin: 1rem 0;
+      padding-left: 1.2rem;
+
+      &.active {
+        border: 1px solid black;
+      }
+    }
+
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    button {
+      @include form;
+    }
+  }
+}
+
+// 2 - Saved Images Section
+.saved-images {
+  width: 90%;
+  margin: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .upload-container {
+    width: 90%;
+  }
+  .file-form {
+    width: 90%;
+
+    form {
+      justify-content: center;
+    }
+  }
+}
